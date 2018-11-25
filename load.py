@@ -23,6 +23,7 @@ def handle_missing(df):
     df.category_name.fillna(value="missing", inplace=True)
     df.brand_name.fillna(value="missing", inplace=True)
     df.item_description.fillna(value="missing", inplace=True)
+
     return df
 
 
@@ -49,11 +50,11 @@ def text_to_sequences(train_df, test_df):
     tokenizer.fit_on_texts(raw_text)
 
     # TODO: clean the text further, including stemming and lemmatization
-    train_df["seq_item_description"] = tokenizer.texts_to_sequences(train_df.item_description.str.lower())
-    test_df["seq_item_description"] = tokenizer.texts_to_sequences(test_df.item_description.str.lower())
+    train_df['seq_item_description'] = tokenizer.texts_to_sequences(train_df.item_description.str.lower())
+    test_df['seq_item_description'] = tokenizer.texts_to_sequences(test_df.item_description.str.lower())
 
-    train_df["seq_name"] = tokenizer.texts_to_sequences(train_df.name.str.lower())
-    test_df["seq_name"] = tokenizer.texts_to_sequences(test_df.name.str.lower())
+    train_df['seq_name'] = tokenizer.texts_to_sequences(train_df.name.str.lower())
+    test_df['seq_name'] = tokenizer.texts_to_sequences(test_df.name.str.lower())
 
     return train_df, test_df, tokenizer
 
